@@ -30,6 +30,7 @@ RUN apt-get update && apt-get install -y \
   protobuf-compiler \ 
   python-dev \  
   python-pip \ 
+  subversion \ 
   unzip \
   wget 
 
