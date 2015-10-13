@@ -30,6 +30,8 @@ RUN apt-get update && apt-get install -y \
   protobuf-compiler \ 
   python-dev \  
   python-pip \ 
+  python-numpy \ 
+  python-scipy \ 
   unzip \
   wget 
 
