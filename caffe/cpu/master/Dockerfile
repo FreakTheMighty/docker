@@ -30,7 +30,6 @@ RUN apt-get update && apt-get install -y \
   protobuf-compiler \ 
   python-dev \  
   python-pip \ 
-  subversion \ 
   unzip \
   wget 
 
@@ -85,7 +84,7 @@ RUN cd /opt/caffe && \
 
 # Install python deps
 RUN cd /opt/caffe && \
-  (pip install -r python/requirements.txt; easy_install numpy; pip install -r python/requirements.txt) && \
+  (for req in $(cat python/requirements.txt); do pip install $req; done) && \
   easy_install pillow
 
 # Numpy include path hack - github.com/BVLC/caffe/wiki/Setting-up-Caffe-on-Ubuntu-14.04
