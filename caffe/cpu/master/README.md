@@ -1,13 +1,13 @@
 Caffe is a deep learning framework.   See the [Caffe homepage](http://caffe.berkeleyvision.org/) for more info.  
 
+This was created for the [elastic-thought](https://github.com/tleyden/elastic-thought) project, which is a REST api wrapper around Caffe, but should be useful for anyone running Caffe.  
+
+There are CPU and GPU versions of this image:
+
 This docker image is part of the following images generated from a single template:
 
-* CPU
-    * Develop branch: [tleyden5iwx/caffe-cpu-develop](https://registry.hub.docker.com/u/tleyden5iwx/caffe-cpu-develop/)
-    * Master branch: [tleyden5iwx/caffe-cpu-master](https://registry.hub.docker.com/u/tleyden5iwx/caffe-cpu-master/)
-* GPU 
-    * Develop branch: [tleyden5iwx/caffe-gpu-develop](https://registry.hub.docker.com/u/tleyden5iwx/caffe-gpu-develop/)
-    * Master branch: [tleyden5iwx/caffe-gpu-master](https://registry.hub.docker.com/u/tleyden5iwx/caffe-gpu-master/)
+* CPU: [tleyden5iwx/caffe-cpu-master](https://registry.hub.docker.com/u/tleyden5iwx/caffe-cpu-master/)
+* GPU: [tleyden5iwx/caffe-gpu-master](https://registry.hub.docker.com/u/tleyden5iwx/caffe-gpu-master/)
 
 **Verify CPU Version:**
 
@@ -15,8 +15,9 @@ This docker image is part of the following images generated from a single templa
     $ ./get_mnist.sh
     $ cd ../../examples/mnist
     $ sed -i 's/solver_mode: GPU/solver_mode: CPU/' lenet_solver.prototxt
-    $ ./create_mnist.sh
-    $ ./train_lenet.sh
+    $ cd ../../
+    $ ./examples/mnist/create_mnist.sh
+    $ ./examples/mnist/train_lenet.sh
 
 **Expected output:**
 
@@ -40,9 +41,8 @@ See [Running Caffe on AWS GPU Instance via Docker](http://tleyden.github.io/blog
 
     $ cd /opt/caffe/data/mnist
     $ ./get_mnist.sh
-    $ cd ../../examples/mnist
-    $ ./create_mnist.sh
-    $ ./train_lenet.sh
+    $ ./examples/mnist/create_mnist.sh
+    $ ./examples/mnist/train_lenet.sh
 
 **Troubleshooting:**
 
