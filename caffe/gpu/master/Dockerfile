@@ -88,12 +88,8 @@ RUN cd /opt/caffe && \
 
 # Install python deps
 RUN cd /opt/caffe && \
-  (pip install -r python/requirements.txt; easy_install numpy; pip install -r python/requirements.txt) && \
+  (for req in $(cat python/requirements.txt); do pip install $req; done) && \
   easy_install pillow
-
-# Numpy include path hack - github.com/BVLC/caffe/wiki/Setting-up-Caffe-on-Ubuntu-14.04
-RUN NUMPY_EGG=`ls /usr/local/lib/python2.7/dist-packages | grep -i numpy` && \
-  ln -s /usr/local/lib/python2.7/dist-packages/$NUMPY_EGG/numpy/core/include/numpy /usr/include/python2.7/numpy
 
 # Build Caffe python bindings
 RUN cd /opt/caffe && make pycaffe
