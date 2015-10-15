@@ -21,6 +21,7 @@ RUN apt-get update && apt-get install -y \
   g++-4.6-multilib \ 
   gfortran \ 
   git \ 
+  graphviz \ 
   libprotobuf-dev \
   libleveldb-dev \
   libsnappy-dev \
@@ -98,7 +99,8 @@ RUN ldconfig
 # Install python deps
 RUN cd /opt/caffe && \
   (for req in $(cat python/requirements.txt); do pip install $req; done) && \
-  easy_install pillow
+  easy_install pillow && \ 
+  pip install pydot
 
 # Numpy include path hack - github.com/BVLC/caffe/wiki/Setting-up-Caffe-on-Ubuntu-14.04
 # RUN NUMPY_EGG=`ls /usr/local/lib/python2.7/dist-packages | grep -i numpy` && \
